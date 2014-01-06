@@ -5,28 +5,34 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RC.WindowsPhone", "RC.WindowsPhone\RC.WindowsPhone.csproj", "{D6A6299B-CBD4-44A0-9349-53CED173598E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RC.WindowsStore", "RC.WinRT\RC.WindowsStore.csproj", "{892A78A6-A3DA-4CFA-8B2B-8A715320F404}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RC.WindowsStore", "RC.WindowsStore\RC.WindowsStore.csproj", "{892A78A6-A3DA-4CFA-8B2B-8A715320F404}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samlples", "Samlples", "{B3FBA1BE-A80D-416E-9387-284F3095CE0C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{B3FBA1BE-A80D-416E-9387-284F3095CE0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsPhoneSample", "Samples\WindowsPhoneSample\WindowsPhoneSample.csproj", "{3338A05A-7CF1-4DAA-A8F9-DA828E532757}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsStoreSample", "Samples\WindowsStoreSample\WindowsStoreSample.csproj", "{DC96C9E9-4539-4BB4-8307-8302B007722D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
-		SccProjectUniqueName0 = RC.WindowsPhone\\RC.WindowsPhone.csproj
-		SccProjectName0 = RC.WindowsPhone
-		SccLocalPath0 = RC.WindowsPhone
-		SccLocalPath1 = .
-		SccProjectUniqueName2 = RC.WinRT\\RC.WindowsStore.csproj
-		SccProjectName2 = RC.WinRT
-		SccLocalPath2 = RC.WinRT
-		SccProjectUniqueName3 = Samples\\WindowsPhoneSample\\WindowsPhoneSample.csproj
-		SccProjectTopLevelParentUniqueName3 = RC.sln
-		SccProjectName3 = Samples/WindowsPhoneSample
-		SccLocalPath3 = Samples\\WindowsPhoneSample
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = RC.WindowsPhone\\RC.WindowsPhone.csproj
+		SccProjectName1 = RC.WindowsPhone
+		SccLocalPath1 = RC.WindowsPhone
+		SccProjectUniqueName2 = Samples\\WindowsPhoneSample\\WindowsPhoneSample.csproj
+		SccProjectTopLevelParentUniqueName2 = RC.sln
+		SccProjectName2 = Samples/WindowsPhoneSample
+		SccLocalPath2 = Samples\\WindowsPhoneSample
+		SccProjectUniqueName3 = RC.WindowsStore\\RC.WindowsStore.csproj
+		SccProjectName3 = RC.WindowsStore
+		SccLocalPath3 = RC.WindowsStore
+		SccProjectUniqueName4 = Samples\\WindowsStoreSample\\WindowsStoreSample.csproj
+		SccProjectTopLevelParentUniqueName4 = RC.sln
+		SccProjectName4 = Samples/WindowsStoreSample
+		SccLocalPath4 = Samples\\WindowsStoreSample
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,11 +95,36 @@ Global
 		{3338A05A-7CF1-4DAA-A8F9-DA828E532757}.Release|x86.ActiveCfg = Release|x86
 		{3338A05A-7CF1-4DAA-A8F9-DA828E532757}.Release|x86.Build.0 = Release|x86
 		{3338A05A-7CF1-4DAA-A8F9-DA828E532757}.Release|x86.Deploy.0 = Release|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|ARM.Build.0 = Debug|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x64.ActiveCfg = Debug|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x64.Build.0 = Debug|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x64.Deploy.0 = Debug|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x86.ActiveCfg = Debug|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x86.Build.0 = Debug|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Debug|x86.Deploy.0 = Debug|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|ARM.ActiveCfg = Release|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|ARM.Build.0 = Release|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|ARM.Deploy.0 = Release|ARM
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x64.ActiveCfg = Release|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x64.Build.0 = Release|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x64.Deploy.0 = Release|x64
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x86.ActiveCfg = Release|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x86.Build.0 = Release|x86
+		{DC96C9E9-4539-4BB4-8307-8302B007722D}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3338A05A-7CF1-4DAA-A8F9-DA828E532757} = {B3FBA1BE-A80D-416E-9387-284F3095CE0C}
+		{DC96C9E9-4539-4BB4-8307-8302B007722D} = {B3FBA1BE-A80D-416E-9387-284F3095CE0C}
 	EndGlobalSection
 EndGlobal

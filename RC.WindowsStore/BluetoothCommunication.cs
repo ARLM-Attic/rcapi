@@ -48,10 +48,6 @@ namespace RC.WinRT
 			await _socket.ConnectAsync(service.ConnectionHostName, service.ConnectionServiceName,
 				 SocketProtectionLevel.BluetoothEncryptionAllowNullAuthentication);
 
-			//_reader = new DataReader(_socket.InputStream);
-			//_reader.ByteOrder = ByteOrder.LittleEndian;
-
-			//await ThreadPool.RunAsync(PollInput);
 		}
 
 		/// <summary>
