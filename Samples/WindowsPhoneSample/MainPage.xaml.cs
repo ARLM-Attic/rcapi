@@ -37,7 +37,7 @@ namespace WindowsPhoneSample
         {
             var joyState = JoystickControl.GetState();
             ferrari.Steering = joyState.ThumbSticks.Left.X;
-            ferrari.Speed = 0.1f;// joyState.ThumbSticks.Left.Y;
+            ferrari.Speed =  joyState.ThumbSticks.Left.Y;
             ferrari.Trimmer = ((byte)Trimmer.Value);
         }
 
@@ -51,7 +51,6 @@ namespace WindowsPhoneSample
             {
                 await ferrari.ConnectAsync();
                 ferrari.Start();
-                JoystickControl.StartJoystick();
             }
             catch(Exception ex)
             {
@@ -64,7 +63,6 @@ namespace WindowsPhoneSample
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            JoystickControl.StopJoystick();
             base.OnNavigatedFrom(e);
             ferrari.Stop();
         }

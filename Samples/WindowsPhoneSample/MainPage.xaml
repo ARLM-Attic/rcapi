@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:WindowsPhoneSample"
+    xmlns:VirtualJoy="clr-namespace:VirtualJoystick"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -15,7 +16,7 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid>
-        <local:Joystick Name="JoystickControl" Margin="428,180,0,0" Width="300" Height="300"></local:Joystick>
+        <VirtualJoy:VirtualJoystick Name="JoystickControl" Margin="363,133,0,0"/>
         <Button x:Name="LeftButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="LeftButton_Click"/>
         <Button x:Name="RightButton" Content="&gt;&gt;" HorizontalAlignment="Left" Height="72" Margin="636,10,0,0" VerticalAlignment="Top" Width="82" Click="RightButton_Click"/>
         <Button x:Name="BlinkersOffButton" Content="Off" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Click="BlinkersOffButton_Click"/>
