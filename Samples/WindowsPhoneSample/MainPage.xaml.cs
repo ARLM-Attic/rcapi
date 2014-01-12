@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using Windows.Networking.Proximity;
 using System.Windows.Input;
 using RC.Core.Bluetooth;
+using RC.Core.Silverlit;
 
 namespace WindowsPhoneSample
 {
@@ -36,8 +37,8 @@ namespace WindowsPhoneSample
         void timer_Tick(object sender, EventArgs e)
         {
             var joyState = JoystickControl.GetState();
-            ferrari.Steering = joyState.ThumbSticks.Left.X;
-            ferrari.Speed =  joyState.ThumbSticks.Left.Y;
+            ferrari.Steering = joyState.X;
+            ferrari.Speed =  joyState.Y;
             ferrari.Trimmer = ((byte)Trimmer.Value);
         }
 
@@ -50,6 +51,7 @@ namespace WindowsPhoneSample
             try
             {
                 await ferrari.ConnectAsync();
+                ferrari.ConnectionLost += ferrari_ConnectionLost;
                 ferrari.Start();
             }
             catch(Exception ex)
@@ -60,7 +62,10 @@ namespace WindowsPhoneSample
             base.OnNavigatedTo(e);
         }
 
-
+        void ferrari_ConnectionLost(object sender, Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
@@ -104,7 +109,7 @@ namespace WindowsPhoneSample
         private void PartyButton_Click(object sender, RoutedEventArgs e)
         {
             ferrari.HeadLightOn = false;
-            ferrari.LightSequence = new byte[] { 1, 8, 2, 4 };
+            ferrari.LightSequence = new byte[] { (byte)LightEnum.Head, (byte)LightEnum.RightBlinker, (byte)LightEnum.Break, (byte)LightEnum.LeftBlinker };
         }
 
         

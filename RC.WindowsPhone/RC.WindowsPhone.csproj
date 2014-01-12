@@ -93,6 +93,9 @@
     <Compile Include="..\RC.Core\DataReceivedEventArgs.cs">
       <Link>Core\DataReceivedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\rc.core\delegates\ConnectionLostDelegate.cs">
+      <Link>Core\Delegates\ConnectionLostDelegate.cs</Link>
+    </Compile>
     <Compile Include="..\RC.Core\Interfaces\ICar.cs">
       <Link>Core\Interfaces\ICar.cs</Link>
     </Compile>
@@ -107,6 +110,9 @@
     </Compile>
     <Compile Include="..\RC.Core\Interfaces\ICommunication.cs">
       <Link>Core\Interfaces\ICommunication.cs</Link>
+    </Compile>
+    <Compile Include="..\RC.Core\Interfaces\IConnectionLost.cs">
+      <Link>Core\Interfaces\IConnectionLost.cs</Link>
     </Compile>
     <Compile Include="..\RC.Core\Silverlit\LightEnum.cs">
       <Link>Silverlit\LightEnum.cs</Link>

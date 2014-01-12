@@ -1,18 +1,24 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System.Windows.Input;
-using System.Diagnostics;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
-namespace VirtualJoystick
+// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+
+namespace WindowsStoreSample
 {
-    public partial class VirtualJoystick : UserControl
+    public sealed partial class VirtualJoystick : UserControl
     {
 
         /// <summary>
@@ -21,7 +27,7 @@ namespace VirtualJoystick
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register("Angle", typeof(double), typeof(VirtualJoystick), null);
 
         /// <summary>
-        /// Current distanse (from 0 to 100)
+        /// Current distance (from 0 to 100)
         /// </summary>
         public static readonly DependencyProperty DistanceProperty = DependencyProperty.Register("Distance", typeof(double), typeof(VirtualJoystick), null);
 
@@ -100,65 +106,59 @@ namespace VirtualJoystick
         public VirtualJoystick()
         {
             InitializeComponent();
+            this.Loaded += VirtualJoystick_Loaded;
 
-#if WINDOWS_PHONE
-            Knob.ManipulationStarted += Knob_ManipulationStarted;
-#else
-            Knob.MouseLeftButtonDown += Knob_MouseLeftButtonDown;
-            Knob.MouseMove += Knob_MouseMove;
-            Knob.MouseLeftButtonUp += Knob_MouseLeftButtonUp;
-#endif
         }
 
-#if WINDOWS_PHONE
-        void Knob_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        void VirtualJoystick_Loaded(object sender, RoutedEventArgs e)
         {
-            _prevAngle = _prevDistance = 0;
-            Touch.FrameReported += Touch_FrameReported;
-            if (StickCaptured != null) StickCaptured(this, new EventArgs());
+            //((FrameworkElement)Parent).PointerPressed += VirtualJoystick_PointerPressed;
+            this.PointerPressed += VirtualJoystick_PointerPressed;
+            ((FrameworkElement)Parent).PointerReleased += VirtualJoystick_PointerReleased;
+            ((FrameworkElement)Parent).PointerMoved += VirtualJoystick_PointerMoved;
+            ((FrameworkElement)Parent).PointerExited += VirtualJoystick_PointerReleased;
         }
 
-        void Touch_FrameReported(object sender, TouchFrameEventArgs e)
+        
+        
+        void VirtualJoystick_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
-            TouchPoint touchPoint = e.GetPrimaryTouchPoint(Base);
-            Point newPoint = new Point(touchPoint.Position.X - Base.ActualWidth / 2, touchPoint.Position.Y - Base.ActualHeight / 2);
-
-            switch (touchPoint.Action)
+            if (touch)
             {
-                case TouchAction.Down:
-                    _startPos = newPoint;
-                    break;
-
-                case TouchAction.Move:
-                    moveKnob(newPoint);
-                    break;
-
-                case TouchAction.Up:
-                    Touch.FrameReported -= Touch_FrameReported;
-                    centerKnob.Begin();
-                    break;
+                moveKnob(e.GetCurrentPoint(Base).Position);
             }
         }
-#else
-        void Knob_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            _startPos = e.GetPosition(Base);
-            _prevAngle = _prevDistance = 0;
-            Knob.CaptureMouse();
-            if (StickCaptured != null) StickCaptured(this, new EventArgs());
-        }
 
-        private void Knob_MouseMove(object sender, MouseEventArgs e)
+        void VirtualJoystick_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
-            moveKnob(e.GetPosition(Base));
-        }
-
-        private void Knob_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Knob.ReleaseMouseCapture();
             centerKnob.Begin();
+            touch = false;
         }
-#endif
+        bool touch = false;
+        void VirtualJoystick_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+                touch = true;
+                _startPos = e.GetCurrentPoint(Base).Position;
+                _prevAngle = _prevDistance = 0;
+                if (StickCaptured != null) StickCaptured(this, new EventArgs());           
+        }
+
+   
+
+        //void Knob_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        //{
+        //    moveKnob(e.GetPosition(Base));
+        //}
+
+        //void Knob_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        //{
+        //    //_startPos = base.TransformToVisual(e.;
+        //    _prevAngle = _prevDistance = 0;
+        //   // Knob.CaptureMouse();
+        //    if (StickCaptured != null) StickCaptured(this, new EventArgs());           
+        //}
+
+
 
         private void moveKnob(Point newPos)
         {
@@ -189,13 +189,12 @@ namespace VirtualJoystick
             }
         }
 
-        private void centerKnob_Completed(object sender, EventArgs e)
+        private void centerKnob_Completed(object sender, object e)
         {
             Angle = Distance = _prevAngle = _prevDistance = 0;
             if (StickMove != null) StickMove(this, new EventArgs());
             if (StickReleased != null) StickReleased(this, new EventArgs());
         }
-
         public Vector2 GetState()
         {
             return new Vector2() { Y = ((float)(Distance * Math.Sin((90 + Angle) / 180 * Math.PI)) / 100), X = ((float)(Distance * Math.Cos((90 + Angle) / 180 * Math.PI)) / 100) };

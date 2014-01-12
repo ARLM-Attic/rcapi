@@ -17,11 +17,11 @@
 
     <Grid>
         <VirtualJoy:VirtualJoystick Name="JoystickControl" Margin="363,133,0,0"/>
-        <Button x:Name="LeftButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="LeftButton_Click"/>
-        <Button x:Name="RightButton" Content="&gt;&gt;" HorizontalAlignment="Left" Height="72" Margin="636,10,0,0" VerticalAlignment="Top" Width="82" Click="RightButton_Click"/>
-        <Button x:Name="BlinkersOffButton" Content="Off" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Click="BlinkersOffButton_Click"/>
-        <Button x:Name="PartyButton" Content="Party" HorizontalAlignment="Left" Margin="303,82,0,0" VerticalAlignment="Top" Click="PartyButton_Click"/>
-        <Slider x:Name="Trimmer" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top" Width="386" Height="98" SmallChange="1" Maximum="15" Value="8"/>
+        <Button x:Name="LeftButton" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Click="LeftButton_Click"/>
+        <Button x:Name="RightButton" Content="&gt;&gt;" HorizontalAlignment="Left" Height="72" Margin="190,375,0,0" VerticalAlignment="Top" Width="82" Click="RightButton_Click"/>
+        <Button x:Name="BlinkersOffButton" Content="Off" HorizontalAlignment="Left" Margin="101,375,0,0" VerticalAlignment="Top" Click="BlinkersOffButton_Click"/>
+        <Button x:Name="PartyButton" Content="Party" HorizontalAlignment="Left" Margin="92,301,0,0" VerticalAlignment="Top" Click="PartyButton_Click"/>
+        <Slider x:Name="Trimmer" HorizontalAlignment="Left" Margin="382,27,0,0" VerticalAlignment="Top" Width="308" Height="98" SmallChange="1" Maximum="15" Value="8"/>
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -9,8 +9,8 @@
     <ProjectGuid>{892A78A6-A3DA-4CFA-8B2B-8A715320F404}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RC.WinRT</RootNamespace>
-    <AssemblyName>RC.WinRT</AssemblyName>
+    <RootNamespace>RC.WindowsStore</RootNamespace>
+    <AssemblyName>RC.WindowsStore</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -34,7 +34,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINRT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -114,6 +114,9 @@
     <Compile Include="..\RC.Core\DataReceivedEventArgs.cs">
       <Link>Core\DataReceivedEventArgs.cs</Link>
     </Compile>
+    <Compile Include="..\RC.Core\Delegates\ConnectionLostDelegate.cs">
+      <Link>Core\Delegates\ConnectionLostDelegate.cs</Link>
+    </Compile>
     <Compile Include="..\rc.core\interfaces\ICar.cs">
       <Link>Interfaces\ICar.cs</Link>
     </Compile>
@@ -128,6 +131,9 @@
     </Compile>
     <Compile Include="..\rc.core\interfaces\ICommunication.cs">
       <Link>Interfaces\ICommunication.cs</Link>
+    </Compile>
+    <Compile Include="..\RC.Core\Interfaces\IConnectionLost.cs">
+      <Link>Interfaces\IConnectionLost.cs</Link>
     </Compile>
     <Compile Include="..\rc.core\silverlit\LightEnum.cs">
       <Link>Silverlit\LightEnum.cs</Link>

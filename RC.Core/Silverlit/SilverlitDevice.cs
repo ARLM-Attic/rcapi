@@ -8,7 +8,7 @@ using RC.Core.Interfaces;
 
 #if WINRT
 using Windows.UI.Xaml;
-using RC.WinRT;
+using RC.WindowsStore;
 using Windows.Foundation;
 #else
 using RC.WindowsPhone;
@@ -18,7 +18,7 @@ using System.Windows.Threading;
 
 namespace RC.Core.Silverlit
 {
-    public abstract class SilverlitBluetoothDevice:IDisposable
+    public abstract class SilverlitBluetoothDevice:IDisposable,ILostConnection
     {
         DispatcherTimer timer = new DispatcherTimer();
 
@@ -133,7 +133,15 @@ namespace RC.Core.Silverlit
         /// </summary>
         protected async void SendCommandToDevice()
         {
-            await communication.WriteAsync(GetBytesToSend());
+            try
+            {
+                await communication.WriteAsync(GetBytesToSend());
+            }
+            catch (Exception ex)
+            {
+                ConnectionLost(this,ex);
+                Stop();
+            }
         }
 
 
@@ -158,6 +166,15 @@ namespace RC.Core.Silverlit
         public void Dispose()
         {
             communication.Disconnect();
+        }
+
+        public event ConnectionLostEventHandler ConnectionLost;
+        public void LostConnection(Exception ex)
+        {
+            if (ConnectionLost != null)
+            {
+                ConnectionLost(this, ex);
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ using Windows.Devices.Enumeration;
 using Windows.Devices.Bluetooth.Rfcomm;
 using System.Runtime.InteropServices.WindowsRuntime;
 
-namespace RC.WinRT
+namespace RC.WindowsStore
 {
 	/// <summary>
 	/// Communicate with EV3 brick over Bluetooth.
